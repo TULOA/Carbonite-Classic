@@ -168,9 +168,7 @@ function Nx.Notes:Init()
 			Nx.prt (L["Reset old notes data"] .. " %f", fav.Version)
 		end
 
-		fav = defaults.profile.Notes
-		Nx.fdb.profile.Notes = fav
-		fav.Version = Nx.VERSIONFAV
+		Nx.fdb.profile.Notes.Version = Nx.VERSIONFAV
 	end
 
 

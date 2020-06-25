@@ -1807,10 +1807,10 @@ function Nx.Map:InitHotspots()
 
 				spot.MapId = mapId
 				
-				spot.x = tonumber (strsub (loc1, 1, 3), 16)
-				spot.y = tonumber (strsub (loc1, 4, 6), 16)
-				spot.zx = zx
-				spot.zy = zy
+				--spot.x = tonumber (strsub (loc1, 1, 3), 16)
+				--spot.y = tonumber (strsub (loc1, 4, 6), 16)
+				--spot.zx = zx
+				--spot.zy = zy
 				
 				local wx, wy = self:GetWorldPos (mapId, zx, zy)
 				spot.WX1 = wx
@@ -9214,8 +9214,8 @@ function Nx.Map:InitTables()
 			local mapId = n
 			local winfo = worldInfo[mapId]
 			if not winfo then
-				
-			else
+				break
+			end
 
 			local cons = {}
 			winfo.Connections = cons
@@ -9271,7 +9271,6 @@ function Nx.Map:InitTables()
 --						Nx.prt ("%s to %s", mapId1, mapId2)
 					end
 				end
-			end
 			end
 		end
 end
@@ -9645,7 +9644,7 @@ end
 function Nx.Map:IsInstanceMap (mapId)
 	if (Nx.Map:GetCurrentMapAreaID(true) == 20) then return false end
 	local winfo = Nx.Map:GetMap(1).MapWorldInfo
-	if mapId ~= 9000 and not winfo[mapId] then
+	if not winfo[mapId] then
 		Nx.Map:GetZoneInfo (mapId)
 	end
 	if not winfo[mapId] then
