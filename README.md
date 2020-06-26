@@ -1,3 +1,10 @@
+This is a branch I will maintain for now until copied into the main classic release.
+Below is from the current maintainer otherwise Ircdrik.
+
+Issues with Quest Database entries such as quest objectives being off or wrong or missing (not in database) let me know in the issues tab with the quest name, which objective and if its a change where it is from your carbonite minimap. Otherwise with just the quest id I will be going off WoWHead for updates here.
+
+
+
 # Carbonite-Classic
 Carbonite + Modules for WoW Classic
 
