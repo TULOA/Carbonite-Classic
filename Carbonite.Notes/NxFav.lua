@@ -67,8 +67,30 @@ local function notesConfig()
 						Nx.fdb.profile.Notes.ShowMap = not Nx.fdb.profile.Notes.ShowMap
 					end,
 				},
-				handy = {
+				notesize = {
 					order = 2,
+					type = "range",
+					width = "normal",
+					min = 10,					
+					max = 100,
+					step = 5,
+					name = L["Size of Notes On Map"],
+					desc = L["Sets size of notes on the carbonite map"],
+					get = function()
+						return Nx.fdb.profile.Notes.NoteSize
+					end,
+					set = function(input,value)					
+						Nx.fdb.profile.Notes.NoteSize = value
+					end,
+					disabled = function()
+						if Nx.fdb.profile.Notes.ShowMap then
+							return false
+						end
+						return true
+					end,
+				},
+				handy = {
+					order = 3,
 					type = "toggle",
 					width = "full",
 					name = L["Display Handynotes On Map"],
@@ -93,7 +115,7 @@ local function notesConfig()
 					end,
 				},
 				handysize = {
-					order = 3,
+					order = 4,
 					type = "range",
 					width = "normal",
 					min = 10,					
@@ -1430,7 +1452,7 @@ function Nx.Notes:UpdateIcons()
 
 	if self.CurFav and self.CurItemI then
 
-		map:InitIconType ("!Fav2", "WP", "", 21, 21)
+		map:InitIconType ("!Fav2", "WP", "", Nx.fdb.profile.Notes.NoteSize + 4, Nx.fdb.profile.Notes.NoteSize + 4)
 		local str
 		local typ, flags, name, data
 		if type(self.CurFav) == "string" then
@@ -1466,7 +1488,7 @@ function Nx.Notes:UpdateIcons()
 	self.DrawMapId = mapId
 	self.Draw = draw
 
-	map:InitIconType ("!Fav", "WP", "", 17, 17)
+	map:InitIconType ("!Fav", "WP", "", Nx.fdb.profile.Notes.NoteSize, Nx.fdb.profile.Notes.NoteSize)
 --	map:SetIconTypeAlpha ("!Fav", map.GOpts["MapIconFavAlpha"])
 
 	if not draw and self.InstLevelSet == Nx.Map:GetCurrentMapDungeonLevel() then

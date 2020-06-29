@@ -6563,9 +6563,12 @@ function Nx.List:Update (showLast)
 					
 					if Nx.QItems[qId] then
 						local link = Nx.QItems[qId]
+						f:SetAttribute ("item", link)
+						f:SetAttribute("item", "item:" .. Nx.QItems[qId])
+						f.mItem = Nx.QItems[qId]
+						f:SetScript("OnEnter", function(self) GameTooltip:SetOwner(self, "ANCHOR_CURSOR"); GameTooltip:ClearLines(); GameTooltip:SetItemByID(self.mItem); GameTooltip:Show() end)
 					end
-					f:SetAttribute ("item", link)
-					f:SetAttribute("item", "item:" .. Nx.QItems[qId])
+					
 
 					if doBind then
 						doBind = false
