@@ -39,6 +39,7 @@ local defaults = {
 	profile = {
 		Notes = {
 			ShowMap = true,
+			NoteSize = 10
 			HandyNotes = true,
 			HandyNotesSize = 15,
 		},
